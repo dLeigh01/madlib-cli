@@ -1,14 +1,5 @@
 import re
 
-print("""
-** Welcome! I'm glad you're here!
-** I've got a fun game for you today...
-** Madlibs!
-** In this game, all you need to do is answer my prompts and I'll give you back a fun scenario!
-** Are you ready?
-** Let's start!
-""")
-
 # strip text from template
 def read_template(f):
     with open(f) as file:
@@ -24,9 +15,8 @@ def parse_template(str):
         parts = prompts
         return stripped, parts
 
-    new_string = re.sub(r'\{\w+\}', '{}', str)
-    new_prompts = re.findall(r'\{\w+\}', str)
-    remove_curly_bracers(new_prompts)
+    new_string = re.sub(r"(?<={).*?(?=})", '', str)
+    new_prompts = re.findall(r"(?<={).*?(?=})", str)
 
     return pieces(new_string, tuple(new_prompts))
 
@@ -34,11 +24,22 @@ def parse_template(str):
 def merge(str, prompts):
     return str.format(*prompts)
 
-# removes extra characters from prompts
-def remove_curly_bracers(prompts):
-    i = 0
-    for item in prompts:
-        prompts[i] = item.replace('{', '')
-        prompts[i] = prompts[i].replace('}', '')
-        i += 1
+# run game
+if __name__ == '__main__':
+    print("""
+    ** Welcome! I'm glad you're here!
+    ** I've got a fun game for you today...
+    ** Madlibs!
+    ** In this game, all you need to do is reply with a word that matches my prompts and I'll give you back a fun scenario!
+    ** Are you ready?
+    ** Let's start!
+    """)
 
+    text = read_template("assets/make_me_a_video_game.txt")
+    parsed_text, prompts = parse_template(text)
+
+    responses = []
+    for prompt in prompts:
+        responses.append(input(prompt + ' > '))
+
+    print(merge(parsed_text, tuple(responses)))
