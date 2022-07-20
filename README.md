@@ -6,6 +6,14 @@
 
 ### Links and Resources
 
-https://careerkarma.com/blog/python-string-strip/#:~:text=The%20Python%20strip()%20method,you%20have%20specified%20to%20remove.&text=This%20example%20removes%20all%20the,space%20characters%20in%20our%20string.
+https://careerkarma.com/blog/python-string-strip/
+
+https://www.geeksforgeeks.org/g-fact-41-multiple-return-values-in-python/
+
+https://pynative.com/python-regex-replace-re-sub/
+
+https://careerkarma.com/blog/python-remove-character-from-string/
+
+https://www.w3schools.com/python/ref_string_format.asp
 
 ### Setup
