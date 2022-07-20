@@ -42,4 +42,8 @@ if __name__ == '__main__':
     for prompt in prompts:
         responses.append(input(prompt + ' > '))
 
-    print(merge(parsed_text, tuple(responses)))
+    final = merge(parsed_text, tuple(responses))
+    print(final)
+
+    with open('assets/madlib_response.txt', 'w') as file:
+        file.writelines(final)
